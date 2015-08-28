@@ -1,12 +1,14 @@
 package com.pixisolutions.loyaltymanager.models;
 
+import android.provider.BaseColumns;
+
 import java.util.Date;
 
 /**
  * Created by sanjoy on 8/28/15.
  */
 public class Offer {
-    private Long id;
+    private Integer id;
     private String name;
     private String summary;
     private String description;
@@ -15,11 +17,11 @@ public class Offer {
     private Date created;
     private Date expires;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -78,4 +80,5 @@ public class Offer {
     public void setExpires(Date expires) {
         this.expires = expires;
     }
+
 }
