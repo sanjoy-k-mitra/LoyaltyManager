@@ -1,11 +1,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat">
-        <item name="android:background">@drawable/background</item>
-        <item name="android:textColor">#000000</item>
-        <item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>
+    <style name="LoyaltyManagerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/LoyaltyManagerTheme.ActionBarStyle</item>
+        <item name="actionBarStyle">@style/LoyaltyManagerTheme.ActionBarStyle</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="LoyaltyManagerTheme.ActionBarStyle" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/actionbarBackground</item>
+        <item name="background">@color/actionbarBackground</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="LoyaltyManagerTheme.ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn_next</item>
+    </style>
+
+
 
 </resources>
