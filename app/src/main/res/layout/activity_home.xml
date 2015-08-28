@@ -47,8 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_scan"
-        android:id="@+id/brnScan"
-        android:layout_above="@+id/brnHistory"
+        android:id="@+id/btnScan"
+        android:layout_above="@+id/btnHistory"
         android:layout_centerHorizontal="true" />
     <Button
         android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="25dp"
         android:layout_marginBottom="25dp"
-        android:id="@+id/brnHistory"/>
+        android:id="@+id/btnHistory"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
-        android:id="@+id/brnShop"        />
+        android:id="@+id/btnShop"        />
 
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.pixisolutions.loyaltymanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.widget.EditText;
 /**
  * Created by sanjoy on 8/26/15.
  */
-public class LoginActivity extends ActionBarActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnNext;
     private EditText txtPhoneNumber;
