@@ -1,15 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="LoyaltyManagerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="LoyaltyManagerTheme" parent="Theme.AppCompat.Light">
         <item name="android:actionBarStyle">@style/LoyaltyManagerTheme.ActionBarStyle</item>
         <item name="actionBarStyle">@style/LoyaltyManagerTheme.ActionBarStyle</item>
         <!-- Customize your theme here. -->
     </style>
 
     <style name="LoyaltyManagerTheme.ActionBarStyle" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/actionbarBackground</item>
-        <item name="background">@color/actionbarBackground</item>
+        <item name="android:background">@color/appPrimaryColor</item>
+        <item name="background">@color/appPrimaryColor</item>
         <item name="android:gravity">center</item>
     </style>
 
