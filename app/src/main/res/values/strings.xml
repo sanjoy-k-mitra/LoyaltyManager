@@ -7,6 +7,7 @@
     <string name="history_label">History</string>
 
     <string name="offer_point_label">Points required to redeem  </string>
+    <string name="item_point_label">Collected Points  </string>
 
     <string name="server_url">localhost:8000/</string>
     <string name="offer_endpoint">api/offer/</string>

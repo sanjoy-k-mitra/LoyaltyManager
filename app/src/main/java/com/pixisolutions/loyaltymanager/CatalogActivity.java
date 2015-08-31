@@ -1,11 +1,8 @@
 package com.pixisolutions.loyaltymanager;
 
-import android.app.Activity;
-import android.app.ListActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.android.volley.toolbox.Volley;
@@ -31,11 +28,10 @@ public class CatalogActivity extends ActionBarActivity implements GsonRequestLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_offer);
-        listView = (ListView)findViewById(R.id.listOffers);
+        setContentView(R.layout.activity_list);
+        listView = (ListView)findViewById(R.id.listView);
 	    offerAdapter = new OfferAdapter(CatalogActivity.this, R.layout.offer_layout, offers);
         listView.setAdapter(offerAdapter);
-        Type type = new TypeToken<ArrayList<Offer>>(){}.getType();
         GsonRequest request = new GsonRequest<Offer>("http://192.168.0.102:8000/api/offer/", Offer.class, this);
         Volley.newRequestQueue(CatalogActivity.this).add(request.perform());
     }

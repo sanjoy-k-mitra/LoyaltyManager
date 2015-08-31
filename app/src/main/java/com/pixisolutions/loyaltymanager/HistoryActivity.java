@@ -5,19 +5,51 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ListView;
+
+import com.android.volley.toolbox.Volley;
+import com.pixisolutions.loyaltymanager.adapters.ItemAdapter;
+import com.pixisolutions.loyaltymanager.models.Item;
+import com.pixisolutions.loyaltymanager.models.Offer;
+import com.pixisolutions.loyaltymanager.net.GsonRequest;
+import com.pixisolutions.loyaltymanager.net.GsonRequestListener;
+
+import java.util.ArrayList;
 
 /**
  * Created by sanjoy on 8/28/15.
  */
-public class HistoryActivity extends ListActivity {
+public class HistoryActivity extends ActionBarActivity implements GsonRequestListener<Item> {
+
+    private static final String TAG = "HistoryActivity";
+    private ListView listView;
+    private ItemAdapter itemAdapter;
+    private ArrayList<Item> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list);
+        items = new ArrayList<Item>();
+        listView = (ListView)findViewById(R.id.listView);
+        itemAdapter = new ItemAdapter(HistoryActivity.this, R.layout.item_layout, items);
+        listView.setAdapter(itemAdapter);
+        GsonRequest request = new GsonRequest<Item>("http://192.168.0.102:8000/api/item/", Item.class, this);
+        Volley.newRequestQueue(HistoryActivity.this).add(request.perform());
+    }
 
-//        setListAdapter();
+    @Override
+    public void onErrorResponse(Exception error) {
+        Log.e(TAG, error.getMessage(), error);
+    }
+
+    @Override
+    public void onResponse(Item item) {
+        items.add(item);
+        itemAdapter.notifyDataSetChanged();
     }
 }

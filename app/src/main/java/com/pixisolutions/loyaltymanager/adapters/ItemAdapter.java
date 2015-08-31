@@ -8,32 +8,31 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.pixisolutions.loyaltymanager.R;
+import com.pixisolutions.loyaltymanager.models.Item;
 
-import com.pixisolutions.loyaltymanager.models.Offer;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by sanjoy on 8/31/15.
  */
-public class OfferAdapter extends ArrayAdapter<Offer> {
+public class ItemAdapter extends ArrayAdapter<Item> {
 
-    List<Offer> offers;
+    List<Item> items;
 
-    public OfferAdapter(Context context, int resource, List<Offer> offers) {
-        super(context, resource, offers);
-        this.offers = offers;
+    public ItemAdapter(Context context, int resource, List<Item> items) {
+        super(context, resource, items);
+        this.items = items;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.offer_layout, parent, false);
-        TextView dspDesc = (TextView) rowView.findViewById(R.id.dspDescription);
+        View rowView = inflater.inflate(R.layout.item_layout, parent, false);
+        TextView dspName = (TextView) rowView.findViewById(R.id.dspName);
         TextView dspPoint = (TextView) rowView.findViewById(R.id.dspPoint);
-        dspDesc.setText(offers.get(position).getDescription());
-        dspPoint.setText(String.valueOf(offers.get(position).getPoint()));
+        dspName.setText(items.get(position).getName());
+        dspPoint.setText(String.valueOf(items.get(position).getPoint()));
         return rowView;
     }
+
 }
