@@ -10,12 +10,8 @@ import java.util.Date;
 public class Offer {
     private Integer id;
     private String name;
-    private String summary;
     private String description;
     private Long point;
-    private Double price;
-    private Date created;
-    private Date expires;
 
     public Integer getId() {
         return id;
@@ -33,14 +29,6 @@ public class Offer {
         this.name = name;
     }
 
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -56,29 +44,4 @@ public class Offer {
     public void setPoint(Long point) {
         this.point = point;
     }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getExpires() {
-        return expires;
-    }
-
-    public void setExpires(Date expires) {
-        this.expires = expires;
-    }
-
 }
