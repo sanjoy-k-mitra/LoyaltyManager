@@ -38,7 +38,7 @@ public class HistoryActivity extends ActionBarActivity implements GsonRequestLis
         listView = (ListView)findViewById(R.id.listView);
         itemAdapter = new ItemAdapter(HistoryActivity.this, R.layout.item_layout, items);
         listView.setAdapter(itemAdapter);
-        GsonRequest request = new GsonRequest<Item>("http://192.168.0.102:8000/api/item/", Item.class, this);
+        GsonRequest request = new GsonRequest<Item>("http://10.10.0.1:8000/api/item/", Item.class, this);
         Volley.newRequestQueue(HistoryActivity.this).add(request.perform());
     }
 

@@ -32,7 +32,7 @@ public class CatalogActivity extends ActionBarActivity implements GsonRequestLis
         listView = (ListView)findViewById(R.id.listView);
 	    offerAdapter = new OfferAdapter(CatalogActivity.this, R.layout.offer_layout, offers);
         listView.setAdapter(offerAdapter);
-        GsonRequest request = new GsonRequest<Offer>("http://192.168.0.102:8000/api/offer/", Offer.class, this);
+        GsonRequest request = new GsonRequest<Offer>("http://10.10.0.1:8000/api/offer/", Offer.class, this);
         Volley.newRequestQueue(CatalogActivity.this).add(request.perform());
     }
 
