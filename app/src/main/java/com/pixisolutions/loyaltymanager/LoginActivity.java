@@ -1,5 +1,7 @@
 package com.pixisolutions.loyaltymanager;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -17,6 +19,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private Button btnNext;
     private EditText txtPhoneNumber;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +30,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtPhoneNumber = (EditText)findViewById(R.id.txtPhoneNumber);
 
         btnNext.setOnClickListener(this);
+        dialog = new Dialog(LoginActivity.this);
+        dialog.setContentView(R.layout.phone_verification_dialog);
+        dialog.findViewById(R.id.btnVerificationNext).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnNext:
+            case R.id.btnVerificationNext:
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btnNext:
+                dialog.show();
+                break;
+
         }
     }
 }

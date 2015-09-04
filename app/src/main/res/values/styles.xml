@@ -4,6 +4,7 @@
     <style name="LoyaltyManagerTheme" parent="Theme.AppCompat.Light">
         <item name="android:actionBarStyle">@style/LoyaltyManagerTheme.ActionBarStyle</item>
         <item name="actionBarStyle">@style/LoyaltyManagerTheme.ActionBarStyle</item>
+        <item name="android:dialogTheme">@style/LoyaltyManagerTheme.DialogTheme</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -13,10 +14,15 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="LoyaltyManagerTheme.ButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/btn_next</item>
+
+    <style name="LoyaltyManagerTheme.DialogTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowTitleBackgroundStyle">@style/LoyaltyManagerTheme.DialogTheme.Background</item>
     </style>
-
-
+    <style name="LoyaltyManagerTheme.DialogTheme.Background">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/btn_close</item>
+    </style>
 
 </resources>
