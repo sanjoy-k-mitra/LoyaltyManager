@@ -1,26 +1,36 @@
 package com.pixisolutions.loyaltymanager;
 
+import android.app.Dialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.Volley;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.pixisolutions.loyaltymanager.models.Item;
+import com.pixisolutions.loyaltymanager.net.GsonRequest;
+import com.pixisolutions.loyaltymanager.net.GsonRequestListener;
 
 import java.io.InvalidObjectException;
+import java.util.Properties;
+import java.util.logging.Logger;
 
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener, GsonRequestListener<Item>{
 
-    Button btnScan;
-    Button btnHistory;
-    Button btnShop;
+    private static final String TAG = "HomeActivity";
+    protected Button btnScan;
+    protected Button btnHistory;
+    protected Button btnShop;
+    protected GsonRequest<Item> itemGsonRequest;
+    protected Properties appProperties;
+    protected Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +45,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         btnShop = (Button)findViewById(R.id.btnShop);
         btnShop.setOnClickListener(this);
+
+        appProperties = new Properties();
+        try{
+            appProperties.load(getAssets().open("app.properties"));
+        }catch (Exception exception){
+            Log.e(TAG, exception.getMessage(), exception);
+        }
+
+        dialog = new Dialog(HomeActivity.this);
+        dialog.setContentView(R.layout.reward_dialog);
+        dialog.findViewById(R.id.btnOk).setOnClickListener(this);
+
     }
 
     @Override
@@ -44,6 +66,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             if (result != null) {
                 String contents = result.getContents();
                 if (contents != null) {
+                    String url = appProperties.getProperty("server.url", "http://10.10.0.1:8000") + "/api/item/searchCode?code=" + contents;
+                    itemGsonRequest = new GsonRequest<Item>(url, Item.class, HomeActivity.this);
+                    Volley.newRequestQueue(HomeActivity.this).add(itemGsonRequest.perform());
                     Toast.makeText(HomeActivity.this, contents, Toast.LENGTH_LONG).show();
                 } else {
                     throw new NullPointerException("No Content Found");
@@ -71,6 +96,20 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 Intent shopIntent = new Intent(HomeActivity.this, CatalogActivity.class);
                 startActivity(shopIntent);
                 break;
+            case R.id.btnOk:
+                dialog.dismiss();
+                break;
         }
+    }
+
+    @Override
+    public void onResponse(Item item) {
+        ((TextView)dialog.findViewById(R.id.dspPointReceived)).setText(item.getPoint().toString());
+        dialog.show();
+    }
+
+    @Override
+    public void onErrorResponse(Exception error) {
+        Log.e(TAG, error.getMessage(), error);
     }
 }

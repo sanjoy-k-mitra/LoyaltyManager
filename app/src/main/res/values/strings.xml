@@ -3,6 +3,7 @@
     <string name="login">Login</string>
     <string name="home">Home</string>
     <string name="next">Next</string>
+    <string name="close">Close</string>
     <string name="loyalty_level">Loyalty Level</string>
     <string name="catalog_label">Catalog</string>
     <string name="shop_label">Shop</string>

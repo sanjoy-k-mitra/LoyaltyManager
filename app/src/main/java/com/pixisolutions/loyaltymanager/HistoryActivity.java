@@ -43,7 +43,7 @@ public class HistoryActivity extends ActionBarActivity implements GsonRequestLis
         try{
             appProperties.load(getAssets().open("app.properties"));
         }catch (Exception exception){
-            Log.d(TAG, exception.getMessage(), exception);
+            Log.e(TAG, exception.getMessage(), exception);
         }
         String url = appProperties.getProperty("server.url", "http://10.10.0.1:8000") + "/api/item";
         GsonRequest request = new GsonRequest<Item>(url, Item.class, this);
