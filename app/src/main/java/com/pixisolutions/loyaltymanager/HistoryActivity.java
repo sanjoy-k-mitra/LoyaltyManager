@@ -19,6 +19,7 @@ import com.pixisolutions.loyaltymanager.net.GsonRequest;
 import com.pixisolutions.loyaltymanager.net.GsonRequestListener;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 /**
  * Created by sanjoy on 8/28/15.
@@ -38,7 +39,14 @@ public class HistoryActivity extends ActionBarActivity implements GsonRequestLis
         listView = (ListView)findViewById(R.id.listView);
         itemAdapter = new ItemAdapter(HistoryActivity.this, R.layout.item_layout, items);
         listView.setAdapter(itemAdapter);
-        GsonRequest request = new GsonRequest<Item>("http://10.10.0.1:8000/api/item/", Item.class, this);
+        Properties appProperties = new Properties();
+        try{
+            appProperties.load(getAssets().open("app.properties"));
+        }catch (Exception exception){
+            Log.d(TAG, exception.getMessage(), exception);
+        }
+        String url = appProperties.getProperty("server.url", "http://10.10.0.1:8000") + "/api/item";
+        GsonRequest request = new GsonRequest<Item>(url, Item.class, this);
         Volley.newRequestQueue(HistoryActivity.this).add(request.perform());
     }
 
