@@ -30,6 +30,10 @@
             android:label="@string/catalog_label"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ShopActivity"
+            android:label="@string/shop_label"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".HistoryActivity"
             android:label="@string/history_label"
             android:screenOrientation="portrait" />

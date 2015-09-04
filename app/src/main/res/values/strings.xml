@@ -4,6 +4,7 @@
     <string name="home">Home</string>
     <string name="loyalty_level">Loyalty Level</string>
     <string name="catalog_label">Catalog</string>
+    <string name="shop_label">Shop</string>
     <string name="history_label">History</string>
 
     <string name="offer_point_label">Points required to redeem  </string>
