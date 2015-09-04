@@ -6,10 +6,10 @@ import java.util.Date;
  * Created by sanjoy on 8/28/15.
  */
 public class Item {
-    private Long id;
-    private String code;
-    private String name;
-    private Integer point;
+    protected Long id;
+    protected String code;
+    protected String name;
+    protected Integer point;
 
     public Long getId() {
         return id;

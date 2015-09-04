@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class OfferAdapter extends ArrayAdapter<Offer> {
 
-    List<Offer> offers;
+    protected List<Offer> offers;
 
     public OfferAdapter(Context context, int resource, List<Offer> offers) {
         super(context, resource, offers);
@@ -36,4 +36,6 @@ public class OfferAdapter extends ArrayAdapter<Offer> {
         dspPoint.setText(String.valueOf(offers.get(position).getPoint()));
         return rowView;
     }
+
+
 }

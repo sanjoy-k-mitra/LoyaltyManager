@@ -8,10 +8,10 @@ import java.util.Date;
  * Created by sanjoy on 8/28/15.
  */
 public class Offer {
-    private Integer id;
-    private String name;
-    private String description;
-    private Long point;
+    protected Integer id;
+    protected String name;
+    protected String description;
+    protected Long point;
 
     public Integer getId() {
         return id;

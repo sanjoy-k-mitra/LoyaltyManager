@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class ItemAdapter extends ArrayAdapter<Item> {
 
-    List<Item> items;
+    protected List<Item> items;
 
     public ItemAdapter(Context context, int resource, List<Item> items) {
         super(context, resource, items);
