@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtPhoneNumber"
         android:background="@drawable/numberinput"
-        android:paddingLeft="120dp"
+        android:paddingLeft="110dp"
         android:layout_centerInParent="true"/>
 
     <Button
