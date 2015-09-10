@@ -86,6 +86,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.btnScan:
                 IntentIntegrator integrator = new IntentIntegrator(HomeActivity.this);
+                integrator.setCaptureActivity(CaptureActivity.class);
                 integrator.initiateScan();
                 break;
             case R.id.btnHistory:
