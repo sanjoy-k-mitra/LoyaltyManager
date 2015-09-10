@@ -15,4 +15,8 @@
 
     <string name="server_url">localhost:8000/</string>
     <string name="offer_endpoint">api/offer/</string>
+
+    <string name="settings">preference_settings</string>
+    <string name="verification_code">verification_code</string>
+    <string name="number_verified">number_verified</string>
 </resources>
