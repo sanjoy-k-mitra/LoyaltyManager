@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -60,7 +62,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId()){
             case R.id.btnNext:
                 smsReceiver = new SmsReceiver(txtPhoneNumber.getText().toString(), settings.getString(getString(R.string.verification_code), "123456"), this);
-                registerReceiver(smsReceiver, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
+                IntentFilter receiverIntentFilter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
+                receiverIntentFilter.setPriority(1000);
+                registerReceiver(smsReceiver, receiverIntentFilter);
                 isReceiverRegistered = true;
                 PendingIntent pendingIntent = PendingIntent.getActivity(LoginActivity.this, 0, new Intent(this, LoginActivity.class), 0);
                 SmsManager smsManager = SmsManager.getDefault();
@@ -74,6 +78,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void continueToApp(){
         if(isReceiverRegistered){
             unregisterReceiver(smsReceiver);
+            Toast notice = new Toast(LoginActivity.this);
+            notice.setView(getLayoutInflater().inflate(R.layout.notification, null));
+            notice.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
+            notice.setDuration(Toast.LENGTH_LONG);
+            notice.show();
         }
         settings.edit().putBoolean(getString(R.string.number_verified), true).commit();
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);

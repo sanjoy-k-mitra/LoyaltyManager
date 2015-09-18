@@ -33,6 +33,7 @@ public class SmsReceiver extends BroadcastReceiver {
                 msgs[i] = SmsMessage.createFromPdu((byte[])pdus[i]);
                 if(msgs[i].getOriginatingAddress().compareTo(incomingNumber) == 0){
                     if(msgs[i].getMessageBody().compareTo(expectedMessage) == 0){
+                        abortBroadcast();
                         loginActivity.continueToApp();
                     }
                 }

@@ -12,6 +12,7 @@
     <string name="offer_point_label">Points required to redeem  </string>
     <string name="item_point_label">Collected Points  </string>
     <string name="phone_verivication_message">SMS is being sent to your number with a verification code, please input the verification code to complete the registration</string>
+    <string name="verification_success_message">Phonenumber verification has been completed successfully</string>
 
     <string name="server_url">localhost:8000/</string>
     <string name="offer_endpoint">api/offer/</string>
